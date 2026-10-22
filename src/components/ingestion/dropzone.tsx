@@ -162,3 +162,4 @@ export function Dropzone({ onImportComplete, compact = false }: DropzoneProps) {
     </div>
   );
 }
+

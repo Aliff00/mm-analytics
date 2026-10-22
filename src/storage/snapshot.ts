@@ -87,3 +87,4 @@ export async function clearAllData(): Promise<void> {
     await db.meta.clear();
   });
 }
+

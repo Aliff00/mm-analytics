@@ -77,3 +77,4 @@ export function generateTransactionHashSync(parts: {
 
   return fallbackHash(normalizedPayload);
 }
+

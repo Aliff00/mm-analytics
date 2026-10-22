@@ -264,3 +264,4 @@ export function LedgerTable({ transactions }: LedgerTableProps) {
     </Card>
   );
 }
+

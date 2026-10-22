@@ -40,3 +40,4 @@ export function calculateCashFlow(transactions: NormalizedTransaction[]): CashFl
     transactionCount: transactions.length,
   };
 }
+

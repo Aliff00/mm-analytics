@@ -65,8 +65,16 @@ export function Header({
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo & Subtitle */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-sm tracking-tighter shadow-xs">
-              mm
+            <div className="relative w-8 h-8 rounded-lg overflow-hidden bg-slate-900 text-white flex items-center justify-center font-bold text-sm tracking-tighter shadow-xs shrink-0">
+              <img
+                src="/icons/app-icon.png"
+                alt="mm-analytics icon"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  (e.currentTarget as HTMLElement).style.display = 'none';
+                }}
+              />
+              <span className="absolute inset-0 flex items-center justify-center -z-0">mm</span>
             </div>
             <div>
               <div className="flex items-center gap-1.5">
@@ -187,3 +195,4 @@ export function Header({
     </header>
   );
 }
+

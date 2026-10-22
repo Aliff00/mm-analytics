@@ -119,3 +119,4 @@ export function useLedger() {
     isEmpty: allTransactions.length === 0,
   };
 }
+

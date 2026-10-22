@@ -39,3 +39,4 @@ export function sanitizeText(val: unknown): string {
   if (val == null) return '';
   return String(val).trim().replace(/\s+/g, ' ');
 }
+

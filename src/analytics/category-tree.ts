@@ -69,3 +69,4 @@ export function buildCategoryTree(
   // Sort descending by amount
   return summaries.sort((a, b) => b.amount - a.amount);
 }
+

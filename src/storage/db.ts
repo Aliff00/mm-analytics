@@ -25,3 +25,4 @@ class MoneyManagerDB extends Dexie {
 }
 
 export const db = new MoneyManagerDB();
+

@@ -99,3 +99,4 @@ export function RecurringTable({ subscriptions }: RecurringTableProps) {
     </Card>
   );
 }
+

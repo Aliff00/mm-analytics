@@ -140,3 +140,4 @@ export function DriveSyncModal({ isOpen, onClose }: DriveSyncModalProps) {
     </Modal>
   );
 }
+

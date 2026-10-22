@@ -248,3 +248,4 @@ describe('Burn Rate Velocity Calculation', () => {
     expect(burn.actualSpendToDate).toBe(1000);
   });
 });
+

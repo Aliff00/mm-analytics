@@ -85,3 +85,4 @@ export interface MasterLedgerState {
     latestDate: string;
   };
 }
+

@@ -158,3 +158,4 @@ export function TrajectoryChart({ data, totalBudget }: TrajectoryChartProps) {
     </Card>
   );
 }
+

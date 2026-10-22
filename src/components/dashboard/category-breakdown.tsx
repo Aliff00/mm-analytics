@@ -131,3 +131,4 @@ export function CategoryBreakdown({ categories }: CategoryBreakdownProps) {
     </Card>
   );
 }
+

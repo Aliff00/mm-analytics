@@ -141,3 +141,4 @@ export function KpiStrip({ cashFlow, burnRate, onEditBudget }: KpiStripProps) {
     </div>
   );
 }
+

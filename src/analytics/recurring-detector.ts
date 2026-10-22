@@ -94,3 +94,4 @@ export function detectRecurringSubscriptions(
   // Sort by highest average amount descending
   return subscriptions.sort((a, b) => b.averageAmount - a.averageAmount);
 }
+

@@ -67,3 +67,4 @@ export interface RecurringSubscriptionItem {
   estimatedAnnualCost: number;
   confidenceScore: number;
 }
+

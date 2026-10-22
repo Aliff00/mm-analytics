@@ -478,3 +478,4 @@ export async function loadSampleData(): Promise<number> {
   await db.transactions.bulkPut(transactions);
   return transactions.length;
 }
+

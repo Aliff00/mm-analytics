@@ -77,3 +77,4 @@ export function isRowValid(row: RawImportRow, mapping: HeaderMapping): boolean {
 
   return true;
 }
+
