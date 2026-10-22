@@ -12,7 +12,17 @@ import { BudgetModal } from '@/components/settings/budget-modal';
 import { DriveSyncModal } from '@/components/settings/drive-sync-modal';
 import { IngestionBatchResult } from '@/core/types/ledger';
 import { loadSampleData } from '@/storage/sample-data';
-import { ShieldCheck, Sparkles, FileSpreadsheet, Lock, Cpu, Database } from 'lucide-react';
+import { formatMonthName } from '@/core/utils/dates';
+import {
+  ShieldCheck,
+  Sparkles,
+  Lock,
+  Cpu,
+  Database,
+  Calendar,
+  ChevronDown,
+  SlidersHorizontal,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function App() {
@@ -38,7 +48,6 @@ export function App() {
 
   const handleImportComplete = (result: IngestionBatchResult) => {
     setImportResult(result);
-    // If the imported data has a latest month, we can switch to it
     if (result.dateRange.max) {
       const targetMonth = result.dateRange.max.slice(0, 7);
       if (targetMonth) {
@@ -49,19 +58,15 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
-      {/* Global Header */}
+      {/* Global Minimal Top Bar */}
       <Header
-        availableMonths={availableMonths}
-        activeMonth={activeMonth}
-        onSelectMonth={setActiveMonth}
-        onOpenBudgetModal={() => setIsBudgetModalOpen(true)}
         onOpenDriveModal={() => setIsDriveModalOpen(true)}
         onImportComplete={handleImportComplete}
         totalTransactionsCount={allTransactions.length}
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         {isEmpty ? (
           /* Empty State Hero */
           <div className="max-w-2xl mx-auto py-12 text-center space-y-6">
@@ -140,6 +145,43 @@ export function App() {
         ) : (
           /* Active Dashboard View */
           <div className="space-y-6 animate-in fade-in duration-200">
+            {/* Dashboard Toolbar: Month Filter & Budget Controls */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1">
+              <div className="flex items-center gap-3">
+                <div className="relative flex items-center">
+                  <Calendar className="w-4 h-4 absolute left-3 text-slate-500 pointer-events-none" />
+                  <select
+                    value={activeMonth}
+                    onChange={(e) => setActiveMonth(e.target.value)}
+                    className="pl-9 pr-8 py-2 text-sm font-semibold text-slate-900 bg-white border border-slate-200 rounded-lg hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-400 appearance-none cursor-pointer shadow-xs"
+                  >
+                    {availableMonths.map((ym) => (
+                      <option key={ym} value={ym}>
+                        {formatMonthName(ym)}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="w-4 h-4 absolute right-2.5 text-slate-400 pointer-events-none" />
+                </div>
+
+                <div className="text-xs text-slate-500">
+                  <span className="font-semibold text-slate-800">{monthTransactions.length}</span> transactions recorded
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setIsBudgetModalOpen(true)}
+                  className="bg-white hover:bg-slate-50 text-slate-700 border-slate-200 text-xs"
+                >
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-slate-500 mr-1.5" />
+                  <span>Budget Settings</span>
+                </Button>
+              </div>
+            </div>
+
             {/* Top KPI Metrics Strip */}
             <KpiStrip
               cashFlow={cashFlow}
@@ -208,4 +250,3 @@ export function App() {
   );
 }
 export default App;
-

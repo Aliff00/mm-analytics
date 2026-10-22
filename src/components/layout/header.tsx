@@ -1,35 +1,23 @@
 import React, { useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { formatMonthName } from '@/core/utils/dates';
 import { exportSnapshot, restoreSnapshot, clearAllData } from '@/storage/snapshot';
 import { loadSampleData } from '@/storage/sample-data';
 import { Dropzone } from '@/components/ingestion/dropzone';
 import {
-  Calendar,
   Download,
   Upload,
   Trash2,
   Cloud,
   Sparkles,
-  SlidersHorizontal,
-  ChevronDown,
 } from 'lucide-react';
 
 interface HeaderProps {
-  availableMonths: string[];
-  activeMonth: string;
-  onSelectMonth: (month: string) => void;
-  onOpenBudgetModal: () => void;
   onOpenDriveModal: () => void;
   onImportComplete: (result: any) => void;
   totalTransactionsCount: number;
 }
 
 export function Header({
-  availableMonths,
-  activeMonth,
-  onSelectMonth,
-  onOpenBudgetModal,
   onOpenDriveModal,
   onImportComplete,
   totalTransactionsCount,
@@ -62,10 +50,10 @@ export function Header({
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
-          {/* Logo & Subtitle */}
-          <div className="flex items-center gap-3">
-            <div className="relative w-8 h-8 rounded-lg overflow-hidden bg-slate-900 text-white flex items-center justify-center font-bold text-sm tracking-tighter shadow-xs shrink-0">
+        <div className="flex items-center justify-between h-14 gap-4">
+          {/* Logo */}
+          <div className="flex items-center gap-2.5">
+            <div className="relative w-7 h-7 rounded-lg overflow-hidden bg-slate-900 text-white flex items-center justify-center font-bold text-xs tracking-tighter shadow-xs shrink-0">
               <img
                 src="/icons/app-icon.jpg"
                 alt="mm-analytics icon"
@@ -76,46 +64,7 @@ export function Header({
               />
               <span className="absolute inset-0 flex items-center justify-center -z-0">mm</span>
             </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-bold text-sm text-slate-900 tracking-tight">mm-analytics</span>
-                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200/70">
-                  iOS Spec
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-400 hidden sm:block">
-                Zero-liability client-side BI for Money Manager
-              </p>
-            </div>
-          </div>
-
-          {/* Month Selector */}
-          <div className="flex items-center gap-2">
-            <div className="relative flex items-center">
-              <Calendar className="w-3.5 h-3.5 absolute left-3 text-slate-400 pointer-events-none" />
-              <select
-                value={activeMonth}
-                onChange={(e) => onSelectMonth(e.target.value)}
-                className="pl-8 pr-7 py-1.5 text-xs font-medium text-slate-800 bg-slate-50 border border-slate-200 rounded-md hover:bg-slate-100 focus:outline-none focus:ring-1 focus:ring-slate-400 appearance-none cursor-pointer"
-              >
-                {availableMonths.map((ym) => (
-                  <option key={ym} value={ym}>
-                    {formatMonthName(ym)}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown className="w-3.5 h-3.5 absolute right-2.5 text-slate-400 pointer-events-none" />
-            </div>
-
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={onOpenBudgetModal}
-              title="Edit monthly budget benchmarks"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-slate-500" />
-              <span className="hidden md:inline">Budget</span>
-            </Button>
+            <span className="font-semibold text-sm text-slate-900 tracking-tight">mm-analytics</span>
           </div>
 
           {/* Action Tools */}
@@ -131,11 +80,11 @@ export function Header({
               title="Cloud Sync with Google Drive"
             >
               <Cloud className="w-3.5 h-3.5 text-slate-500" />
-              <span className="hidden lg:inline">Cloud Sync</span>
+              <span className="hidden sm:inline text-xs">Cloud Sync</span>
             </Button>
 
             {/* Snapshot Backup / Restore Actions */}
-            <div className="hidden sm:flex items-center gap-1 border-l border-slate-200 pl-2">
+            <div className="flex items-center gap-1 border-l border-slate-200 pl-2">
               <Button
                 variant="ghost"
                 size="sm"
@@ -144,7 +93,7 @@ export function Header({
                 title="Download JSON Snapshot backup"
               >
                 <Download className="w-3.5 h-3.5 text-slate-500" />
-                <span className="hidden xl:inline">Backup</span>
+                <span className="hidden md:inline text-xs">Backup</span>
               </Button>
 
               <input
@@ -161,7 +110,7 @@ export function Header({
                 title="Restore from JSON Snapshot"
               >
                 <Upload className="w-3.5 h-3.5 text-slate-500" />
-                <span className="hidden xl:inline">Restore</span>
+                <span className="hidden md:inline text-xs">Restore</span>
               </Button>
 
               {totalTransactionsCount === 0 && (
@@ -169,7 +118,7 @@ export function Header({
                   variant="outline"
                   size="sm"
                   onClick={handleLoadDemo}
-                  className="bg-amber-50/70 border-amber-200 text-amber-800 hover:bg-amber-100/70"
+                  className="bg-amber-50/70 border-amber-200 text-amber-800 hover:bg-amber-100/70 text-xs"
                   title="Load demo data for instant inspection"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-amber-600" />
@@ -195,4 +144,3 @@ export function Header({
     </header>
   );
 }
-
