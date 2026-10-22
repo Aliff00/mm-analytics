@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { exportSnapshot, restoreSnapshot, clearAllData } from '@/storage/snapshot';
 import { loadSampleData } from '@/storage/sample-data';
@@ -22,6 +22,7 @@ export function Header({
   onImportComplete,
   totalTransactionsCount,
 }: HeaderProps) {
+  const [iconError, setIconError] = useState(false);
   const restoreInputRef = useRef<HTMLInputElement>(null);
 
   const handleRestoreFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,18 +52,19 @@ export function Header({
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 gap-4">
-          {/* Logo */}
+          {/* Logo & App Icon */}
           <div className="flex items-center gap-2.5">
-            <div className="relative w-7 h-7 rounded-lg overflow-hidden bg-slate-900 text-white flex items-center justify-center font-bold text-xs tracking-tighter shadow-xs shrink-0">
-              <img
-                src="/icons/app-icon.jpg"
-                alt="mm-analytics icon"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  (e.currentTarget as HTMLElement).style.display = 'none';
-                }}
-              />
-              <span className="absolute inset-0 flex items-center justify-center -z-0">mm</span>
+            <div className="w-7 h-7 rounded-lg overflow-hidden border border-slate-200/90 shadow-xs shrink-0 flex items-center justify-center bg-slate-900 text-white">
+              {!iconError ? (
+                <img
+                  src="/icons/app-icon.jpg"
+                  alt="mm-analytics icon"
+                  className="w-full h-full object-cover"
+                  onError={() => setIconError(true)}
+                />
+              ) : (
+                <span className="font-bold text-xs tracking-tighter">mm</span>
+              )}
             </div>
             <span className="font-semibold text-sm text-slate-900 tracking-tight">mm-analytics</span>
           </div>
