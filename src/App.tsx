@@ -72,7 +72,7 @@ export function App() {
           <div className="max-w-2xl mx-auto py-12 text-center space-y-6">
             <div className="flex flex-col items-center gap-3">
               <img
-                src="/icons/app-icon.jpg"
+                src="/icons/app-icon.png"
                 alt="mm-analytics"
                 className="w-16 h-16 rounded-2xl shadow-md border border-slate-200/80 object-cover"
                 onError={(e) => {

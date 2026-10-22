@@ -57,7 +57,7 @@ export function Header({
             <div className="w-7 h-7 rounded-lg overflow-hidden border border-slate-200/90 shadow-xs shrink-0 flex items-center justify-center bg-slate-900 text-white">
               {!iconError ? (
                 <img
-                  src="/icons/app-icon.jpg"
+                  src="/icons/app-icon.png"
                   alt="mm-analytics icon"
                   className="w-full h-full object-cover"
                   onError={() => setIconError(true)}
