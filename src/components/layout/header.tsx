@@ -67,7 +67,7 @@ export function Header({
           <div className="flex items-center gap-3">
             <div className="relative w-8 h-8 rounded-lg overflow-hidden bg-slate-900 text-white flex items-center justify-center font-bold text-sm tracking-tighter shadow-xs shrink-0">
               <img
-                src="/icons/app-icon.png"
+                src="/icons/app-icon.jpg"
                 alt="mm-analytics icon"
                 className="w-full h-full object-cover"
                 onError={(e) => {

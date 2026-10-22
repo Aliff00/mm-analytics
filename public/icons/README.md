@@ -8,3 +8,4 @@ Place your app icon image(s) in this directory.
 - **`favicon.png`** (or **`favicon.ico`**) — Browser tab icon (recommended: 32x32 or 48x48 PNG/ICO)
 
 Files placed inside `public/` are served at the root URL (e.g., `/icons/app-icon.png`).
+
