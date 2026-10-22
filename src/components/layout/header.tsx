@@ -54,16 +54,16 @@ export function Header({
         <div className="flex items-center justify-between h-14 gap-4">
           {/* Logo & App Icon */}
           <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg overflow-hidden border border-slate-200/90 shadow-xs shrink-0 flex items-center justify-center bg-slate-900 text-white">
+            <div className="w-7 h-7 rounded-lg overflow-hidden border border-slate-200 shadow-xs shrink-0 flex items-center justify-center bg-white text-slate-900">
               {!iconError ? (
                 <img
                   src="/icons/app-icon.png"
                   alt="mm-analytics icon"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain p-0.5"
                   onError={() => setIconError(true)}
                 />
               ) : (
-                <span className="font-bold text-xs tracking-tighter">mm</span>
+                <span className="font-bold text-xs tracking-tighter text-slate-900">mm</span>
               )}
             </div>
             <span className="font-semibold text-sm text-slate-900 tracking-tight">mm-analytics</span>

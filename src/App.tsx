@@ -71,14 +71,16 @@ export function App() {
           /* Empty State Hero */
           <div className="max-w-2xl mx-auto py-12 text-center space-y-6">
             <div className="flex flex-col items-center gap-3">
-              <img
-                src="/icons/app-icon.png"
-                alt="mm-analytics"
-                className="w-16 h-16 rounded-2xl shadow-md border border-slate-200/80 object-cover"
-                onError={(e) => {
-                  (e.currentTarget as HTMLElement).style.display = 'none';
-                }}
-              />
+              <div className="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-200 flex items-center justify-center overflow-hidden p-2">
+                <img
+                  src="/icons/app-icon.png"
+                  alt="mm-analytics"
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLElement).style.display = 'none';
+                  }}
+                />
+              </div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-medium text-slate-700">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 <span>Zero-Liability & Zero-Knowledge Architecture</span>
